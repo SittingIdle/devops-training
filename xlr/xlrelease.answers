@@ -7,6 +7,6 @@ http.bind.address=0.0.0.0
 http.context.root=/
 threads.max=24
 client.session.timeout.minutes=0
-http.port=4516
+http.port=5516
 hide.internals=false
 importable.packages.path=importablePackages

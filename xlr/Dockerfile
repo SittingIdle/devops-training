@@ -2,25 +2,25 @@ FROM debian
 
 MAINTAINER Adriaan de Jonge <adejonge@xebia.com>
 
-ENV version 4.5.2
+ENV version 4.7.0
 RUN apt-get update
 RUN apt-get install -y openjdk-7-jre-headless unzip wget --no-install-recommends
 
 
-RUN wget https://download.xebialabs.com/files/Generic/xl-release-${version}-server.zip -O /tmp/xld.zip && unzip /tmp/xlr.zip -d /opt && rm /tmp/xlr.zip
-#ADD xlrelease.answers /opt/xl-release-${version}-server-free-edition/bin/xlrelease.answers
+RUN wget https://download.xebialabs.com/files/Generic/xl-release-${version}-server.zip -O /tmp/xlr.zip && unzip /tmp/xlr.zip -d /opt && rm /tmp/xlr.zip
+ADD xlrelease.answers /opt/xl-release-${version}-server/bin/xlrelease.answers
+ADD xl-release-license.lic /opt/xl-release-${version}-server/conf/xl-release-license.lic
 
-#WORKDIR /opt/xl-release-${version}-server-free-edition/bin
-#RUN ["./run.sh", "-setup", "-reinitialize", "-force", "-setup-defaults", "./bin/xlrelease.answers"]
+WORKDIR /opt/xl-release-${version}-server/bin
+RUN ["./server.sh", "-setup", "-reinitialize", "-force", "-setup-defaults", "./bin/xlrelease.answers"]
 
-#VOLUME /opt/xl-release-${version}-server-free-edition/conf
-#VOLUME /opt/xl-release-${version}-server-free-edition/ext
-#VOLUME /opt/xl-release-${version}-server-free-edition/hotfix
-#VOLUME /opt/xl-release-${version}-server-free-edition/importablePackages
-#VOLUME /opt/xl-release-${version}-server-free-edition/log
-#VOLUME /opt/xl-release-${version}-server-free-edition/plugins
-#VOLUME /opt/xl-release-${version}-server-free-edition/repository
+VOLUME /opt/xl-release-${version}-server/conf
+VOLUME /opt/xl-release-${version}-server/ext
+VOLUME /opt/xl-release-${version}-server/hotfix
+VOLUME /opt/xl-release-${version}-server/importablePackages
+VOLUME /opt/xl-release-${version}-server/log
+VOLUME /opt/xl-release-${version}-server/plugins
+VOLUME /opt/xl-release-${version}-server/repository
 
-#EXPOSE 4516
-
-#CMD ["./run.sh"]
+EXPOSE 55555
+CMD ["./server.sh"]
