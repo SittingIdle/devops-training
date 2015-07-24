@@ -4,3 +4,4 @@
 ./startWildflyPR.sh
 ./startXld.sh
 ./startXlr.sh
+./startMocha.sh
