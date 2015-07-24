@@ -1,4 +1,3 @@
-./startLogspout.sh
 ./startJenkins.sh
 ./startWildflyQA.sh
 ./startWildflyPR.sh
