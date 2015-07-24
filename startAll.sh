@@ -1,5 +1,6 @@
 ./startLogspout.sh
 ./startJenkins.sh
-./startWildfly.sh
+./startWildflyQA.sh
+./startWildflyPR.sh
 ./startXld.sh
 ./startXlr.sh
