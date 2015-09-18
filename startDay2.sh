@@ -20,7 +20,7 @@ docker run -d \
     kibana
 echo $LOGSTASH
 docker run -d \
-    -v=/var/run/docker.sock:/var/run/docker.sock \
+    -v=/var/run/docker.sock:/tmp/docker.sock \
     --name logspout \
     progrium/logspout:master syslog://$LOGSTASH:5000
 
