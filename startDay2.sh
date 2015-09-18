@@ -15,6 +15,7 @@ docker run -d \
 export LOGSTASH=$(docker inspect --format '{{ .NetworkSettings.IPAddress }}' logstash)
 docker run -d \
     -p 80:80 \
+    --link es:elasticsearch \
     --name kibana \
     kibana
 echo $LOGSTASH
