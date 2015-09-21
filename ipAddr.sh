@@ -1,1 +1,1 @@
-docker inspect $1 | grep IPAddr
+docker inspect --format '{{ .NetworkSettings.IPAddress }}' $1
