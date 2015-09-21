@@ -1,1 +1,1 @@
-docker rm $(docker stop $(docker ps -q))
+docker rm jenkins xld xlr wildfly-qa wildfly-pr
