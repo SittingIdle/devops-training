@@ -1,9 +1,9 @@
 FROM ubuntu:14.04
 
-ADD myfile-delete.rb /tmp/myfile-delete.rb
-ADD myfile.rb /tmp/myfile.rb
-ADD webserver-full.rb /tmp/webserver-full.rb
-ADD webserver-plain.rb /tmp/webserver-plain.rb
+ADD myfile-delete.rb /root/myfile-delete.rb
+ADD myfile.rb /root/myfile.rb
+ADD webserver-full.rb /root/webserver-full.rb
+ADD webserver-plain.rb /root/webserver-plain.rb
 
 
 RUN apt-get update 
