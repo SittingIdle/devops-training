@@ -1,5 +1,5 @@
 [Unit]
-Description=Wildfly QA Service
+Description=Datadog Service
 After=logspout@%i.service
 
 [Service]
@@ -17,7 +17,7 @@ ExecStart=/usr/bin/docker run \
           -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
           -e API_KEY=`etcdctl get /datadog` \
           datadog/docker-dd-agent
-          
+
 ExecStop=/usr/bin/docker stop dd-agent
 
 [X-Fleet]

@@ -1,5 +1,5 @@
 [Unit]
-Description=XL Release Service
+Description=Jenkins Service
 After=xlr@%i.service
 
 [Service]
@@ -16,7 +16,7 @@ ExecStart=/usr/bin/docker run \
           --link xld \
           --link xlr \
           jenkins
-          
+
 ExecStop=/usr/bin/docker stop jenkins
 
 [X-Fleet]

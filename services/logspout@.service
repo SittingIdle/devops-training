@@ -1,5 +1,5 @@
 [Unit]
-Description=Wildfly QA Service
+Description=Logspout service
 After=docker.service
 Requires=docker.service
 
@@ -9,14 +9,14 @@ ExecStartPre=-/usr/bin/docker kill logspout
 ExecStartPre=-/usr/bin/docker rm logspout
 ExecStartPre=/usr/bin/docker pull progrium/logspout
 
-ExecStart=/usr/bin/run \
+ExecStart=/usr/bin/docker run \
           --name logspout \
           --hostname=log-devops-training-%i \
           --restart=always \
           -v=/var/run/docker.sock:/tmp/docker.sock \
           progrium/logspout \
           syslog://`etcdctl get /papertrail`
-          
+
 ExecStop=/usr/bin/docker stop logspout
 
 [X-Fleet]

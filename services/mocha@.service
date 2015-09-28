@@ -1,5 +1,5 @@
 [Unit]
-Description=XL Release Service
+Description=Mocha Service
 After=wildfly-qa@%i.service
 
 [Service]
@@ -16,7 +16,7 @@ ExecStart=/usr/bin/docker run \
           --link wildfly-qa \
           --link wildfly-pr \
           /usr/sbin/sshd -D
-          
+
 ExecStop=/usr/bin/docker stop mocha
 
 [X-Fleet]
