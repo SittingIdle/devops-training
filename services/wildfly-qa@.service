@@ -12,9 +12,9 @@ ExecStartPre=-/usr/bin/docker create --name wildfly-qa-data adejonge/wildfly
 ExecStart=/usr/bin/docker run \
           --volumes-from wildfly-qa-data \
           --name wildfly-qa \
-          -p 5516:5516 \
+          -p 1022:22 -p 8081:8081 \
           adejonge/wildfly
-          
+
 ExecStop=/usr/bin/docker stop wildfly-qa
 
 [X-Fleet]

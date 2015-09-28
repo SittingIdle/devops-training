@@ -12,7 +12,7 @@ ExecStartPre=-/usr/bin/docker create --name wildfly-pr-data adejonge/wildfly
 ExecStart=/usr/bin/docker run \
           --volumes-from wildfly-pr-data \
           --name wildfly-pr \
-          -p 5516:5516 \
+          -p 1122:22 -p 8082:8081 \
           adejonge/wildfly
 
 ExecStop=/usr/bin/docker stop wildfly-pr
