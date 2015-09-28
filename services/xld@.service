@@ -17,8 +17,12 @@ ExecStart=/usr/bin/docker run \
           --link wildfly-pr \
           --link mocha \
           adejonge/xld
-          
+
 ExecStop=/usr/bin/docker stop xld
+Restart=always
+RestartSec=5s
+Type=notify
+NotifyAccess=all
 
 [X-Fleet]
 MachineOf=mocha@%i.service

@@ -12,12 +12,15 @@ ExecStartPre=/usr/bin/docker pull progrium/logspout
 ExecStart=/usr/bin/docker run \
           --name logspout \
           --hostname=log-devops-training-%i \
-          --restart=always \
           -v=/var/run/docker.sock:/tmp/docker.sock \
           progrium/logspout \
           syslog://`etcdctl get /papertrail`
 
 ExecStop=/usr/bin/docker stop logspout
+Restart=always
+RestartSec=5s
+Type=notify
+NotifyAccess=all
 
 [X-Fleet]
 Conflicts=logspout@*.service

@@ -20,6 +20,10 @@ ExecStart=/usr/bin/docker run \
           adejonge/xlr
 
 ExecStop=/usr/bin/docker stop xlr
+Restart=always
+RestartSec=5s
+Type=notify
+NotifyAccess=all
 
 [X-Fleet]
 MachineOf=xld@%i.service
