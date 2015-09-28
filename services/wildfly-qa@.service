@@ -18,8 +18,6 @@ ExecStart=/usr/bin/docker run \
 ExecStop=/usr/bin/docker stop wildfly-qa
 Restart=always
 RestartSec=5s
-Type=notify
-NotifyAccess=all
 
 [X-Fleet]
 MachineOf=wildfly-pr@%i.service
