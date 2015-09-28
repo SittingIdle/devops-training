@@ -1,0 +1,24 @@
+[Unit]
+Description=Wildfly QA Service
+After=logspout@%i.service
+
+[Service]
+TimeoutStartSec=0
+ExecStartPre=-/usr/bin/docker kill dd-agent
+ExecStartPre=-/usr/bin/docker rm dd-agent
+ExecStartPre=/usr/bin/docker pull datadog/docker-dd-agent
+
+ExecStart=/usr/bin/docker run \
+          --privileged \
+          --name dd-agent \
+          -h dd-devops-training-%i \
+          -v /var/run/docker.sock:/var/run/docker.sock \
+          -v /proc/mounts:/host/proc/mounts:ro \
+          -v /sys/fs/cgroup/:/host/sys/fs/cgroup:ro \
+          -e API_KEY=`etcdctl get /datadog` \
+          datadog/docker-dd-agent
+          
+ExecStop=/usr/bin/docker stop dd-agent
+
+[X-Fleet]
+MachineOf=logspout@%i.service
