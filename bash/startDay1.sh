@@ -1,6 +1,6 @@
-./startJenkins.sh
 ./startWildflyQA.sh
 ./startWildflyPR.sh
+./startMocha.sh
 ./startXld.sh
 ./startXlr.sh
-./startMocha.sh
+./startJenkins.sh

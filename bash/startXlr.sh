@@ -1,2 +1,10 @@
-docker create --name xlr-data adejonge/xlr bash
-docker run --volumes-from xlr-data --name xlr -d -p 5516:5516 adejonge/xlr
+docker create --name xlr-data adejonge/xlr
+docker run -d \
+          --volumes-from xlr-data \
+          --name xlr \
+          -p 5516:5516 \
+          --link xld \
+          --link mocha \
+          --link wildfly-qa \
+          --link wildfly-pr \
+          adejonge/xlr
