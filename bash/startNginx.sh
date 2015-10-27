@@ -1,4 +1,4 @@
-docker rm nginx
+docker rm $(docker stop nginx)
 docker run -d \
           -v $(pwd)/nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
           --name nginx \
