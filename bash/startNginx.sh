@@ -1,6 +1,6 @@
 docker rm nginx
 docker run -d \
-          -v nginx/nginx.conf:/etc/nginx/nginx.conf:ro \
+          -v /etc/nginx/nginx.conf:nginx/nginx.conf:ro \
           --name nginx \
           -p 80:80 \
           --link xld \
