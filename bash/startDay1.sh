@@ -4,3 +4,4 @@
 ./startXld.sh
 ./startXlr.sh
 ./startJenkins.sh
+./startNginx.sh
