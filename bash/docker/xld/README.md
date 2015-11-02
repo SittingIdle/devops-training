@@ -1,8 +1,8 @@
 ## XL Deploy Docker image
 
-### Installation 
+### Installation
 ```
-docker build -t xldeploy .  
+docker build -t adejonge/xld .  
 ```
 
 ### Usage
