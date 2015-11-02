@@ -3,13 +3,14 @@ FROM debian
 MAINTAINER Fai Fung <ffung@xebia.com>
 
 ENV version 5.0.1
-RUN apt-get update 
+RUN apt-get update
 RUN apt-get install -y openjdk-7-jre-headless unzip wget --no-install-recommends
 
 RUN wget https://dist.xebialabs.com/public/distributions/xl-deploy/${version}/xl-deploy-${version}-server-free-edition.zip -O /tmp/xld.zip && unzip /tmp/xld.zip -d /opt && rm /tmp/xld.zip
-ADD xldeploy.answers /opt/xl-deploy-${version}-server-free-edition/bin/xldeploy.answers 
+ADD xldeploy.answers /opt/xl-deploy-${version}-server-free-edition/bin/xldeploy.answers
+ADD deployit-license.lic /opt/xl-deploy-${version}-server-free-edition/conf/deployit-license.lic
 
-WORKDIR /opt/xl-deploy-${version}-server-free-edition/bin 
+WORKDIR /opt/xl-deploy-${version}-server-free-edition/bin
 RUN ["./run.sh", "-setup", "-reinitialize", "-force", "-setup-defaults", "./bin/xldeploy.answers"]
 
 VOLUME /opt/xl-deploy-${version}-server-free-edition/conf
