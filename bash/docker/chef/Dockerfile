@@ -1,4 +1,4 @@
-FROM ubuntu:14.04
+FROM ubuntu:wily
 
 ADD myfile-delete.rb /root/myfile-delete.rb
 ADD myfile.rb /root/myfile.rb
