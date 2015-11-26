@@ -1,1 +1,1 @@
-docker run -ti adejonge/mocha bash
+docker exec -ti mocha bash
