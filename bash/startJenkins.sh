@@ -1,8 +1,9 @@
-docker create --name jenkins-data jenkins:1.609.3
+docker create --name jenkins-data jenkins:latest
 docker run -d \
           --volumes-from jenkins-data \
           --name jenkins \
           -p 8080:8080 \
-          --link xld \
-          --link xlr \
-          jenkins:1.609.3
+          jenkins:latest
+
+         # --link xld \
+         # --link xlr \
