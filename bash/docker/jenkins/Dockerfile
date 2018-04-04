@@ -29,7 +29,7 @@ COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groov
 #----
 #Changes Ankur
 ENV JENKINS_VERSION 2.107.1
-#http://mirrors.jenkins.io/war/2.60/jenkins.war.sha256
+#http://mirrors.jenkins-ci.org/war-stable/2.107.1/jenkins.war.sha256 - link for Sha
 ENV JENKINS_SHA cec74c80190ed1f6ce55d705d2f649ddb2eaf8aba3ae26796152921d46b31280
 
 # Skip initial setup.
