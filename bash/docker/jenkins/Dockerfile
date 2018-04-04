@@ -25,10 +25,28 @@ COPY init.groovy /usr/share/jenkins/ref/init.groovy.d/tcp-slave-agent-port.groov
 
 #ENV JENKINS_VERSION 1.609.1
 #ENV JENKINS_SHA 698284ad950bd663c783e99bc8045ca1c9f92159
+
+#----
+#Changes Ankur
 ENV JENKINS_VERSION 2.107.1
 #http://mirrors.jenkins.io/war/2.60/jenkins.war.sha256
 ENV JENKINS_SHA cec74c80190ed1f6ce55d705d2f649ddb2eaf8aba3ae26796152921d46b31280
 
+# Skip initial setup.
+ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false" \
+    JENKINS_USER=admin \
+    JENKINS_PASS=admin \
+    JENKINS_EMAIL=admin@localhost 
+    # Customizable settings:
+    # Default admin user.
+    # Default email.
+    # Default URL.
+    # This is necessary because Jenkins cannot reliably detect such a URL from within itself.
+#    JENKINS_URL=http://192.168.64.100:8080/
+
+
+
+#-----
 
 # could use ADD but this one does not check Last-Modified header 
 # see https://github.com/docker/docker/issues/8331

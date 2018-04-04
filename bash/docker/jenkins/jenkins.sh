@@ -25,6 +25,9 @@ export -f copy_reference_file
 echo "--- Copying files at $(date)" >> $COPY_REFERENCE_FILE_LOG
 find /usr/share/jenkins/ref/ -type f -exec bash -c 'copy_reference_file {}' \;
 
+echo "---echoing exec java $JAVA_OPTS -jar /usr/share/jenkins/jenkins.war $JENKINS_OPTS "$@"" >> $COPY_REFERENCE_FILE_LOG
+echo "---COPY_REFERENCE_FILE_LOG: $COPY_REFERENCE_FILE_LOG" >> $COPY_REFERENCE_FILE_LOG
+
 # if `docker run` first argument start with `--` the user is passing jenkins launcher arguments
 if [[ $# -lt 1 ]] || [[ "$1" == "--"* ]]; then
    exec java $JAVA_OPTS -jar /usr/share/jenkins/jenkins.war $JENKINS_OPTS "$@"
