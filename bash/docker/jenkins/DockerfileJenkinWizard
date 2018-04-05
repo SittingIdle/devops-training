@@ -33,7 +33,7 @@ ENV JENKINS_VERSION 2.107.1
 ENV JENKINS_SHA cec74c80190ed1f6ce55d705d2f649ddb2eaf8aba3ae26796152921d46b31280
 
 # Skip initial setup.
-#ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false" \
+ENV JAVA_OPTS="-Djenkins.install.runSetupWizard=false"
 #    JENKINS_USER=admin \
 #    JENKINS_PASS=admin \
 #    JENKINS_EMAIL=admin@localhost 
