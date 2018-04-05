@@ -28,5 +28,8 @@ tr -d '\r' < plugins.txt > plugins2.txt
 docker build . --file DockerfileJenkinWizard --tag jenkinsw:2.107.1 --no-cache --rm
 docker build . --file DockerfilePlugins --tag jenkinsw:2.107.1 --no-cache --rm
 
+Option3)-> Pull from dockerhub
+docker login
+docker pull ankur07garg/personal_demo:jenkinsw_AutoNoWizardInstallWithPlugins
 
 After above steps, run ./startJenkins.sh or ./startJenkinswizard.sh from bash folder (2 levels up)
