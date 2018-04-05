@@ -8,6 +8,7 @@ Option 2)-> For Jenkins on port 9080 and slave on port 59000 - another Jenkins i
 #Create plugins.txt - using some existing Jenkins instance
 
 export JENKINS_URL=http://<jenkins_domain>
+
 curl -sSL "$JENKINS_URL/pluginManager/api/xml?depth=1&xpath=/*/*/shortName|/*/*/version&wrapper=plugins" | perl -pe 's/.*?<shortName>([\w-]+).*?<version>([^<]+)()(<\/\w+>)+/\1 \2\n/g'|sed 's/ /:/'
 
 #Remove CRLF from plugins.txt
