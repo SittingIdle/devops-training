@@ -23,10 +23,21 @@ while read spec || [ -n "$spec" ]; do
     if [ -z "$JENKINS_UC_DOWNLOAD" ]; then
       JENKINS_UC_DOWNLOAD=$JENKINS_UC/download
     fi
-echo"---echoing download plugin   curl -sSL -f ${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi -o $REF/${plugin[0]}.jpi"  >> $COPY_REFERENCE_FILE_LOG 
-#    curl -sSL -f ${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi -o $REF/${plugin[0]}.jpi
+#echo "---echoing download plugin   curl -sSL -f "${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi" -o "$REF/${plugin[0]}.jpi""  >> $COPY_REFERENCE_FILE_LOG 
+#    curl -sSL -f "${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi" -o "$REF/${plugin[0]}.jpi"
+#echo "--echoing curl --retry 3 --retry-delay 5 -sSL -f \"${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi\" -o \"$REF/${plugin[0]}.jpi\"" >> $COPY_REFERENCE_FILE_LOG
+#echo "--echoing curl --retry 3 --retry-delay 5 -sSL -f \"${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi\" -o \"$REF/${plugin[0]}.jpi\"" 
 
-echo "--echoing curl --retry 3 --retry-delay 5 -sSL -f "${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi" -o "$REF/${plugin[0]}.jpi"" >> $COPY_REFERENCE_FILE_LOG
-#curl --retry 3 --retry-delay 5 -sSL -f "${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi" -o "$REF/${plugin[0]}.jpi"
+#printf %s "$JENKINS_UC_DOWNLOAD" | xxd
+JENKINS_UC_DOWNLOAD=${JENKINS_UC_DOWNLOAD%$'\r'}
+URL=${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi
+
+echo "url=$URL"
+#${plugin[1]} = ${plugin[1]%$'\r'}
+URL=${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi
+
+
+
+curl --retry 3 --retry-delay 5 -sSL -f "${JENKINS_UC_DOWNLOAD}/plugins/${plugin[0]}/${plugin[1]}/${plugin[0]}.hpi" -o "$REF/${plugin[0]}.jpi"
 
 done  < $1
