@@ -4,6 +4,7 @@ docker build -t jenkins . --no-cache --tag  jenkins:2.107.1
 
 
 Option 2)-> For Jenkins on port 9080 and slave on port 59000 - another Jenkins instance
+
 #Create plugins.txt - using some existing Jenkins instance
 export JENKINS_URL=http://<jenkins_domain>
 curl -sSL "$JENKINS_URL/pluginManager/api/xml?depth=1&xpath=/*/*/shortName|/*/*/version&wrapper=plugins" | perl -pe 's/.*?<shortName>([\w-]+).*?<version>([^<]+)()(<\/\w+>)+/\1 \2\n/g'|sed 's/ /:/'
@@ -13,5 +14,6 @@ tr -d '\r' < plugins.txt > plugins2.txt
 
 docker build . --file DockerfileJenkinWizard --tag jenkinsw:2.107.1 --no-cache --rm
 docker build . --file DockerfilePlugins --tag jenkinsw:2.107.1 --no-cache --rm
+
 
 After above steps, run ./startJenkins.sh or ./startJenkinswizard.sh from bash folder (2 levels up)
