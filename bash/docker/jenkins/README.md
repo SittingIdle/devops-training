@@ -12,7 +12,7 @@ docker rmi imageids -f
 
 Option 1)-> For Jenkins on port 8080 and slave on port 50000
 
-docker build -t jenkins . --no-cache --tag  jenkins:2.107.1
+docker build -t jenkins . --no-cache --tag  jenkins:2.107.1 --rm
 
 
 Option 2)-> For Jenkins on port 9080 and slave on port 59000 - another Jenkins instance
