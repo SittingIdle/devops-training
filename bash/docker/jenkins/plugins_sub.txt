@@ -41,7 +41,6 @@ build-timeout:1.19
 build-timestamp:1.0.2
 built-on-column:1.1
 checkmarx:8.60.1
-chef-cookbook-pipeline:0.1.0-beta-8
 ci-game:1.26
 cloud-stats:0.18
 cloudbees-bitbucket-branch-source:2.2.11
@@ -84,7 +83,6 @@ handy-uri-templates-2-api:2.1.6-1.0
 hockeyapp:1.2.2
 htmlpublisher:1.16
 http_request:1.8.22
-hygieia-publisher:2.0.5-SNAPSHOT (private-05/16/2017 12:40-svc_jenkins)
 icon-shim:2.0.3
 ivy:1.28
 jackson2-api:2.8.11.1
